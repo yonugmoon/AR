@@ -12511,13 +12511,59 @@ nav button.ar i{background:linear-gradient(135deg,var(--brand),var(--brand-2));c
 #toast.on{opacity:1;transform:translateX(-50%)}
 #toast.good{border-color:#1c3d33;color:var(--good)} #toast.bad{border-color:#4a2222;color:var(--bad)}
 
+/* ---------- 구조(트리) / 배치도 ---------- */
+.seg{display:flex;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--r-sm);padding:3px;gap:3px;margin-bottom:12px}
+.seg button{flex:1;padding:8px 0;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--ink-dim)}
+.seg button.on{background:var(--chip);color:var(--brand)}
+.tree details{border-top:1px solid var(--line)}
+.tree summary{list-style:none;display:flex;align-items:center;gap:8px;padding:11px 15px;cursor:pointer;font-weight:600;font-size:14.5px}
+.tree summary::-webkit-details-marker{display:none}
+.tree summary::before{content:"▸";color:var(--ink-faint);transition:.15s;width:10px}
+.tree details[open]>summary::before{transform:rotate(90deg)}
+.tree summary .cnt{margin-left:auto;font-size:12px;color:var(--ink-dim);font-weight:500;display:flex;gap:6px;align-items:center}
+.tree .lv1>summary{background:#0f1830}
+.tree .lv2>summary{padding-left:30px;font-size:14px}
+.tree .lv3>summary{padding-left:46px;font-size:13.5px}
+.tree .tg{padding:6px 15px 2px 66px;font-size:12px;color:var(--ink-faint)}
+.tree .item{padding-left:62px}
+.mini-prog{width:46px;height:6px;border-radius:6px;background:var(--chip);overflow:hidden;display:inline-block}
+.mini-prog i{display:block;height:100%;background:var(--good)}
+.plan{position:relative;width:100%;aspect-ratio:4/3;background:#0a1222;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background-image:linear-gradient(#16233c 1px,transparent 1px),linear-gradient(90deg,#16233c 1px,transparent 1px);background-size:10% 10%;touch-action:none}
+.plan .door{position:absolute;left:40%;width:20%;bottom:0;height:5px;background:var(--brand);border-radius:3px 3px 0 0}
+.plan .door::after{content:"출입구 · 촬영 시작";position:absolute;left:50%;bottom:7px;transform:translateX(-50%);font-size:10px;color:var(--brand);white-space:nowrap}
+.pi{position:absolute;border:2px solid #4ad991;background:rgba(74,217,145,.14);border-radius:5px;font-size:9.5px;line-height:1.1;padding:1px 2px;letter-spacing:-.02em;overflow:hidden;
+  color:#e8edf7;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;display:flex;align-items:center;justify-content:center;text-align:center;word-break:keep-all}
+.pi.warn{border-color:#f4b740;background:rgba(244,183,64,.14)} .pi.bad{border-color:#f4685f;background:rgba(244,104,95,.16)}
+.pi.new{border-style:dashed;border-color:#a78bfa;background:rgba(167,139,250,.16)} .pi.unk{border-color:#9fb0cc;background:rgba(159,176,204,.12)}
+.pi.hl{box-shadow:0 0 0 3px #fff,0 0 18px #3bd6c6;z-index:3}
+.pi.drag{opacity:.75;z-index:5}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-dim);margin:8px 0 2px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px;border:2px solid}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips .btn{min-height:32px;padding:4px 10px;font-size:12.5px}
+
+/* ---------- 랙 실장도 ---------- */
+.rk{border:2px solid #34425f;border-radius:8px;background:#0a1222;padding:4px;display:flex;flex-direction:column;gap:3px}
+.rk .rkh{text-align:center;font-weight:800;font-size:13px;color:#cfd8ea;background:#1a2540;border-radius:5px;padding:4px}
+.ru{border-radius:5px;padding:5px 8px;font-size:12.5px;line-height:1.3;background:#18233a;border:1px solid #2a3858;cursor:pointer;display:flex;gap:8px;align-items:center}
+.ru .no{font-family:var(--mono);color:var(--ink-faint);font-size:11px;width:20px;flex:none}
+.ru .tx{flex:1;min-width:0} .ru .tx b{font-size:12.5px} .ru .tx span{display:block;font-size:11px;color:var(--ink-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ru.blank{background:repeating-linear-gradient(90deg,#141d30 0 6px,#101828 6px 12px);color:var(--ink-faint);border-style:dashed;cursor:default}
+.ru.alarm{border-color:var(--bad);box-shadow:inset 3px 0 0 var(--bad)}
+.ru.add{box-shadow:inset 3px 0 0 var(--good)}
+.ru .det{display:none;font-size:11.5px;color:var(--ink-dim);margin-top:4px}
+.ru.open .det{display:block}
+.thumbs{display:flex;gap:6px;overflow-x:auto;margin:8px 0}
+.thumbs img{height:64px;border-radius:6px;flex:none}
+
 /* ---------- AR 화면 ---------- */
 #ar{position:fixed;inset:0;z-index:100;background:#000;display:none;touch-action:manipulation}
 #ar.on{display:block}
 #arCanvas{position:absolute;inset:0;width:100%;height:100%}
 #arVideo{display:none}
 .ar-top{position:absolute;top:0;left:0;right:0;display:flex;gap:8px;padding:calc(10px + env(safe-area-inset-top)) 12px 10px;background:linear-gradient(180deg,rgba(0,0,0,.6),transparent)}
-.ar-top .btn{min-height:38px;padding:6px 11px;font-size:13px;background:rgba(17,26,46,.75);backdrop-filter:blur(6px)}
+.ar-top .btn{white-space:nowrap;min-height:38px;padding:6px 11px;font-size:13px;background:rgba(17,26,46,.75);backdrop-filter:blur(6px)}
 .ar-top .btn.on{border-color:var(--brand);color:var(--brand)}
 .ar-top .sp{flex:1}
 .ar-bottom{position:absolute;left:0;right:0;bottom:0;padding:10px 12px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);display:flex;flex-direction:column;gap:8px}
@@ -12589,12 +12635,13 @@ nav button.ar i{background:linear-gradient(135deg,var(--brand),var(--brand-2));c
   <canvas id="arCanvas"></canvas>
   <div id="arHint">카메라 준비 중…</div>
   <div class="ar-top">
-    <button class="btn" onclick="AR.close()">✕ 닫기</button>
-    <button class="btn hide-g" onclick="AR.pickEquip()">설비선택</button>
+    <button class="btn" onclick="AR.close()" title="닫기">✕</button>
+    <button class="btn hide-g" onclick="AR.pickEquip()">📋 선택</button>
     <span class="sp"></span>
+    <button class="btn" id="btnLive" onclick="AR.toggleLive()">🧠 AI</button>
     <button class="btn" id="btnMic" onclick="AR.toggleVoice()">🎤</button>
     <button class="btn" id="btnTorch" onclick="AR.toggleTorch()">🔦</button>
-    <button class="btn" id="btnGlasses" onclick="AR.toggleGlasses()">👓 안경모드</button>
+    <button class="btn" id="btnGlasses" onclick="AR.toggleGlasses()">👓</button>
   </div>
   <div class="ar-bottom">
     <div class="row" id="arExtra"></div>
@@ -12645,8 +12692,8 @@ const LS_KEY = "ar-insp.v1";
 const QR_PREFIX = "YM:";
 let S = load();
 function blankState(){
-  return { settings:{apiKey:"", model:"", tts:true, voice:true, inspector:"", site:""},
-           equips:[], inspections:[], checklists:{}, tab:"home" };
+  return { settings:{apiKey:"", model:"", tts:true, voice:true, liveAI:true, liveSec:4, inspector:"", site:""},
+           equips:[], inspections:[], checklists:{}, layouts:{}, here:{}, tab:"home", equipView:"tree" };
 }
 function load(){
   try{ const raw=localStorage.getItem(LS_KEY); if(raw){ const d=JSON.parse(raw); const b=blankState(); return {...b, ...d, settings:{...b.settings, ...(d.settings||{})}}; } }catch(e){}
@@ -12692,6 +12739,35 @@ function typeIc(t){ return (TYPES[t]||TYPES.etc).ic; }
 function resTag(r){ return r? `<span class="tag ${r==="정상"?"good":r==="주의"?"warn":"bad"}">${esc(r)}</span>` : `<span class="tag">미점검</span>`; }
 function syncTag(s){ return `<span class="tag ${s==="일치"?"good":s==="불일치"?"bad":s==="신규"?"blue":""}">${esc(s||"미확인")}</span>`; }
 function findEquip(id){ return S.equips.find(e=>e.id===id); }
+
+/* ---------- 위치 구조: 건물 > 층 > 실(공간) > 랙/세부 ---------- */
+const NOLOC="(미지정)";
+function floorNorm(f){
+  f=String(f||"").trim(); if(!f) return "";
+  let m=f.match(/^(?:지하|B)\s*(\d+)\s*(?:층|F)?$/i); if(m) return "B"+m[1];
+  m=f.match(/^(\d+)\s*(?:층|F)?$/i); if(m) return m[1]+"F";
+  if(/^(옥상|RF|PH)$/i.test(f)) return "RF";
+  return f;
+}
+function floorOrder(f){ f=floorNorm(f); let m=f.match(/^B(\d+)/); if(m) return -parseInt(m[1]); m=f.match(/^(\d+)F/); if(m) return parseInt(m[1]); if(f==="RF") return 900; return f===NOLOC?9999:999; }
+function composeLoc(e){ return [e.building,e.floor,e.room,e.rack].filter(Boolean).join(" "); }
+function locOf(e){ return {b:e.building||NOLOC, f:e.floor||NOLOC, r:e.room||NOLOC}; }
+function roomKey(b,f,r){ return [b||NOLOC,f||NOLOC,r||NOLOC].join("¦"); }
+function roomName(k){ return k.split("¦").filter(x=>x!==NOLOC).join(" ")||"위치 미지정"; }
+/* 예전 "3F 전송실 R-05" 같은 한 줄 위치를 층/실/랙으로 분리 */
+function splitLoc(e){
+  if(e.building||e.floor||e.room||!e.location) return;
+  let t=e.location.trim();
+  const m=t.match(/(지하\s*\d+\s*층?|B\d+\s*F?|\d+\s*(?:F|층))/i);
+  if(m){ e.floor=floorNorm(m[0].replace(/\s/g,"")); t=t.replace(m[0]," ").trim(); }
+  const parts=t.split(/\s+/).filter(Boolean);
+  // 층 앞에 붙은 단어는 건물명으로 간주 (예: "본관 3F 전송실")
+  if(m && e.location.indexOf(m[0])>0 && parts.length>1){ e.building=parts.shift(); }
+  e.room=parts.shift()||""; e.rack=parts.join(" ");
+  if(!e.building) e.building=S.settings.site||"";
+}
+function migrateLoc(){ let ch=false; S.equips.forEach(e=>{ if(!e.building&&!e.floor&&!e.room&&e.location){ splitLoc(e); e.location=composeLoc(e); ch=true; } }); if(ch) save(); }
+function uniq(arr){ return [...new Set(arr.filter(Boolean))].sort(); }
 function parseQR(text){ text=(text||"").trim(); return text.startsWith(QR_PREFIX)? text.slice(QR_PREFIX.length) : text; }
 
 /* 이미지 축소(전송량·저장공간 절약) */
@@ -12752,20 +12828,21 @@ async function autoPickModel(){
   S.settings.model=best[0]; S.settings.models=names.filter(n=>rankModel(n)>=0); save();
   return best[0];
 }
-async function callGemini(prompt, imageBlobs, _retried){
+async function callGemini(prompt, imageBlobs, opts){
+  opts=opts||{}; const _retried=opts._retried;
   if(!S.settings.apiKey) throw new Error("API 키가 없습니다. 설정에서 Gemini 키를 등록하세요.");
   if(!S.settings.model) await autoPickModel();
   const parts=[{text:prompt}];
   for(const b of (imageBlobs||[])) parts.push({inline_data:{mime_type:"image/jpeg", data:await blobToBase64(b)}});
   const url=`${GEMINI}/models/${encodeURIComponent(S.settings.model)}:generateContent?key=${encodeURIComponent(S.settings.apiKey)}`;
-  const body={contents:[{role:"user",parts}], generationConfig:{temperature:0.1, maxOutputTokens:4096, responseMimeType:"application/json"}};
+  const body={contents:[{role:"user",parts}], generationConfig:{temperature:0.1, maxOutputTokens:opts.maxTokens||4096, responseMimeType:"application/json"}};
   const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!r.ok){
     const t=await r.text();
     // 모델 중단/미지원(404 등) → 사용 가능한 모델로 자동 교체 후 1회 재시도
     if(!_retried && (r.status===404 || /no longer available|not found|not supported|deprecated/i.test(t))){
       const old=S.settings.model, m=await autoPickModel();
-      if(m!==old){ toast(`AI 모델 자동 변경: ${m}`,"good"); return callGemini(prompt, imageBlobs, true); }
+      if(m!==old){ toast(`AI 모델 자동 변경: ${m}`,"good"); return callGemini(prompt, imageBlobs, {...opts,_retried:true}); }
     }
     if(r.status===429) throw new Error("AI 사용 한도 초과(429). 잠시 후 다시 시도하거나 결제 설정을 확인하세요.");
     throw new Error(`AI 오류 ${r.status}: ${t.slice(0,160)}`);
@@ -12796,6 +12873,141 @@ JSON만 출력:
 {"status":"정상|주의|불량|판단불가", "summary":"한 문장 요약(음성 안내용, 40자 이내)",
  "findings":["근거1","근거2"], "actions":["조치 권고1"], "readings":[{"name":"","value":"","unit":""}],
  "otherItems":[{"no":1,"status":"정상|주의|불량","note":""}]}`;
+
+/* ============================================================
+   4-1. QR 없는 실시간 AI 인식 — 여러 프레임 투표 + 설비대장 대조
+   ============================================================ */
+const PROMPT_LIVE = (cands) => `당신은 통신·전기 설비 현장 인식 AI입니다. 사진 중앙의 설비 1대를 식별합니다.
+규칙:
+- 실제로 보이는 글자만 읽기. 추측 금지. 안 보이면 "".
+- 명판·라벨·로고·LCD/표시창 글자를 우선 판독(시리얼은 한 글자씩 정확히).
+- 설비 종류(type) 키: ${Object.entries(TYPES).map(([k,v])=>`${k}(${v.name})`).join(", ")}
+${cands.length?`- 아래 설비대장 후보 중 같은 설비가 있으면 match.id. 같은 모델이 여러 대이면 시리얼·라벨 근거가 있을 때만 선택, 아니면 "".
+설비대장(id|종류|명칭|제조사|모델|시리얼|위치):
+${cands.join("\n")}`:"- 설비대장 후보 없음: match.id는 \"\"."}
+- box_2d: 그 설비의 위치 [ymin,xmin,ymax,xmax], 0~1000 정규화.
+- quality: 판독 조건(좋음|흐림|멀다|반사|어두움), tip: 정확도를 높이기 위한 촬영 안내 한 문장.
+JSON만 출력:
+{"found":true,"box_2d":[0,0,0,0],"type":"","name":"","maker":"","model":"","serial":"","rating":"",
+ "texts":[],"status":"LED/표시 상태 한 줄","match":{"id":"","confidence":0.0,"reason":""},"quality":"","tip":""}`;
+const norm = v => String(v||"").toUpperCase().replace(/[^0-9A-Z가-힣]/g,"");
+/* 시리얼 비교용: 흔한 오독(O↔0, I/L↔1, S↔5 아님 주의) 보정 */
+const normSN = v => norm(v).replace(/O/g,"0").replace(/[IL]/g,"1");
+/* 제조사·정격은 포함관계면 같은 값으로 봄 (LS ↔ LS ELECTRIC) */
+const sameLoose = (a,b) => { a=norm(a); b=norm(b); return !!a && !!b && (a===b || (Math.min(a.length,b.length)>=2 && (a.startsWith(b)||b.startsWith(a)))); };
+const LIVE_FIELDS = ["type","maker","model","serial","rating","name"];
+/* 여러 프레임 결과를 필드별 다수결로 합침 */
+function fuseObs(obs){
+  const f={n:obs.length, agree:{}, votes:{}};
+  for(const k of LIVE_FIELDS){
+    const tally={};
+    obs.forEach(o=>{ const v=(o[k]||"").trim(); if(!v) return; const key=k==="name"?v:k==="serial"?normSN(v):norm(v); (tally[key]=tally[key]||{v,c:0}).c++; });
+    const best=Object.values(tally).sort((a,b)=>b.c-a.c)[0];
+    if(best){ f[k]=best.v; f.agree[k]=best.c; }
+  }
+  obs.forEach(o=>{ const id=o.match&&o.match.id; if(id&&findEquip(id)) f.votes[id]=(f.votes[id]||0)+1+(o.match.confidence||0); });
+  const last=obs[obs.length-1]||{}; f.box=last.box_2d; f.status=last.status; f.tip=last.tip; f.quality=last.quality;
+  return f;
+}
+/* 설비대장과 대조해 점수 계산 (시리얼 일치가 가장 강한 근거) */
+function matchLedger(f){
+  const out=S.equips.map(e=>{
+    let sc=0; const why=[];
+    if(f.serial && norm(e.serial) && normSN(e.serial)===normSN(f.serial)){ sc+=6; why.push("시리얼 일치"); }
+    if(f.model && norm(e.model)){ if(norm(e.model)===norm(f.model)){ sc+=2; why.push("모델 일치"); } else if(norm(f.model).length>=4 && (norm(e.model).includes(norm(f.model))||norm(f.model).includes(norm(e.model)))){ sc+=1; why.push("모델 유사"); } }
+    if(f.maker && sameLoose(e.maker,f.maker)){ sc+=1; why.push("제조사"); }
+    if(f.type && f.type===e.type) sc+=0.5;
+    const v=f.votes[e.id]||0; if(v){ sc+=v*1.5; why.push(`AI ${v.toFixed(1)}표`); }
+    return {e,sc,why};
+  }).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc);
+  const top=out[0], second=out[1];
+  let lock=false, ambiguous=false;
+  if(top){
+    const serialHit=top.why.includes("시리얼 일치");
+    ambiguous = !serialHit && second && second.sc>=top.sc-0.5;
+    lock = !ambiguous && (serialHit || (top.sc>=5 && f.n>=2));
+  }
+  return {top, second, lock, ambiguous, list:out};
+}
+/* 대장값과 현장(AI) 판독값 차이 */
+function ledgerDiff(e,f){
+  const L={maker:"제조사",model:"모델",serial:"시리얼",rating:"정격"}, d=[];
+  for(const k in L){ const same = k==="serial"? normSN(f[k])===normSN(e[k]) : (k==="maker"||k==="rating")? sameLoose(f[k],e[k]) : norm(f[k])===norm(e[k]);
+    if(f[k] && e[k] && !same && (f.agree[k]||0)>=Math.min(2,f.n)) d.push({k,label:L[k],ledger:e[k],field:f[k]}); }
+  return d;
+}
+
+/* ============================================================
+   4-2. 동영상 → 설비 배치도
+   ============================================================ */
+const PROMPT_LAYOUT = (room, n, cands) => `사진 ${n}장은 "${room}" 공간을 출입구에서 시작해 걸으며 촬영한 동영상에서 시간 순서대로 뽑은 프레임입니다(1번=시작).
+할 일:
+1) 이 공간에 있는 통신·전기 설비(랙, 전송장비, UPS, 정류기, 축전지, 항온항습기, 분전반, 단자함, CCTV 등)를 모두 찾기. 여러 프레임에 나온 같은 설비는 1개로 합치기.
+2) 위에서 내려다본 평면 배치도 좌표 추정: 촬영 시작 위치(출입구)=아래쪽 가운데(x=50,y=100), 정면 안쪽 벽=y=0, 왼쪽 벽=x=0, 오른쪽 벽=x=100. x,y는 설비의 왼쪽 위 모서리, w,h는 평면상 크기(0~100). 한 줄로 늘어선 랙은 같은 y에 x를 나란히. 설비끼리 겹치지 않게.
+3) 보이는 라벨·명판 글자만 판독(추측 금지). 설비대장 후보와 같은 설비면 match_id, 근거 없으면 "".
+4) frame: 그 설비가 가장 잘 보이는 프레임 번호.
+설비 종류(type) 키: ${Object.entries(TYPES).map(([k,v])=>`${k}(${v.name})`).join(", ")}
+설비대장 후보(id|종류|명칭|제조사|모델|시리얼|위치):
+${cands.join("\n")||"(없음)"}
+JSON만 출력:
+{"room":{"desc":"공간 설명 한 줄"},"items":[{"label":"","type":"","maker":"","model":"","serial":"","match_id":"","confidence":0.0,"x":0,"y":0,"w":10,"h":8,"frame":1,"note":""}]}`;
+
+/* 동영상에서 n장 프레임을 고르게 추출 (영상 전체를 보내지 않아 빠르고 용량 제한에 안전) */
+async function videoFrames(file, n=10, max=960){
+  const url=URL.createObjectURL(file), v=document.createElement("video");
+  v.muted=true; v.playsInline=true; v.preload="auto"; v.src=url;
+  const once=(ev)=>new Promise((res,rej)=>{ const ok=()=>{cl();res();}, bad=()=>{cl();rej(new Error("동영상을 열 수 없습니다(형식 미지원)"));};
+    const cl=()=>{v.removeEventListener(ev,ok);v.removeEventListener("error",bad);}; v.addEventListener(ev,ok); v.addEventListener("error",bad); });
+  await once("loadedmetadata");
+  if(!isFinite(v.duration)){ v.currentTime=1e7; await once("seeked"); }
+  const d=v.duration; if(!d) throw new Error("동영상 길이를 알 수 없습니다");
+  const sc=Math.min(1,max/Math.max(v.videoWidth,v.videoHeight)), c=document.createElement("canvas");
+  c.width=Math.round(v.videoWidth*sc); c.height=Math.round(v.videoHeight*sc);
+  const out=[];
+  for(let i=0;i<n;i++){
+    v.currentTime=Math.min(d-0.05, d*(i+0.5)/n); await once("seeked");
+    c.getContext("2d").drawImage(v,0,0,c.width,c.height);
+    out.push(await new Promise(r=>c.toBlob(r,"image/jpeg",0.78)));
+  }
+  URL.revokeObjectURL(url);
+  return {frames:out, duration:d};
+}
+
+/* ============================================================
+   4-3. 랙 실장 분석 — 랙에 어떤 장비/모듈이 위→아래로 들어있는지
+   ============================================================ */
+const PROMPT_RACK = (n, eq) => `정보통신 설비 랙(캐비닛) 사진 ${n}장입니다${eq?` (대장상 설비: ${eq.name||""} ${eq.location||""})`:""}.
+보통 첫 사진은 랙 전체, 나머지는 위→아래 근접 사진입니다. 사진들을 종합해 랙에 실장된 것을 위에서 아래 순서로 모두 나열하세요.
+규칙:
+- 실제로 보이는 글자만 판독(제조사 로고, 모델명, 장비명 인쇄, 부착 라벨). 안 보이면 "" 로 두고 모델명을 지어내지 말 것. 외형으로 판단한 기능은 function에 "추정:" 접두어.
+- 블랭크 패널, 환기 패널, 선반, 케이블 정리대, 빈 공간도 kind로 표시(증설 여유 파악용). 연속된 같은 블랭크는 1행으로 합치고 u를 합산.
+- u: 랙 유닛 높이(1U≈4.4cm) 추정, 모르면 0.
+- 장비 안에 슬롯·카드(모듈)가 보이면 slots에 슬롯 번호·모듈명·상태. 안 보이면 빈 배열.
+- status: LED 색/점등, 표시창 숫자를 그대로(예: "LCD 표시, 전원 LED 적색 점등", "표시 229"). 경보로 보이면 alarm:true.
+- 유리문 반사·옆 랙에 비친 장비는 제외. 같은 장비가 여러 사진에 나오면 1번만.
+JSON만 출력:
+{"rack":{"label":"랙 상단 명판 글자","desc":"랙 한 줄 설명"},
+ "units":[{"pos":1,"kind":"장비|블랭크|환기|선반|패치패널|케이블정리|빈공간","u":1,"maker":"","model":"","name":"장비명(인쇄된 그대로)","function":"한글 기능","label":"부착 라벨/메모","status":"","alarm":false,"confidence":0.0,"slots":[{"slot":"","module":"","status":""}]}],
+ "unreadable":["판독 못한 부분"],"tip":"정확도를 높이려면 어떻게 다시 찍을지 한 문장"}`;
+const isGear = u => (u.kind||"장비")==="장비";
+const unitKey = u => norm(u.model||u.name||u.function);
+function rackDiff(prev, cur){
+  if(!prev) return {added:[],removed:[]};
+  const cnt=a=>{ const m={}; a.filter(isGear).forEach(u=>{ const k=unitKey(u); if(k) m[k]=(m[k]||0)+1; }); return m; };
+  const P=cnt(prev.units), C=cnt(cur.units), added=[], removed=[];
+  cur.units.filter(isGear).forEach(u=>{ const k=unitKey(u); if(k && (P[k]||0)<=0) added.push(u); else if(k) P[k]--; });
+  const C2=cnt(cur.units); prev.units.filter(isGear).forEach(u=>{ const k=unitKey(u); if(k && (C2[k]||0)<=0) removed.push(u); else if(k) C2[k]--; });
+  return {added,removed};
+}
+function typeFromFunc(u){
+  const t=[u.function,u.name,u.model].join(" ");
+  if(/UPS/i.test(t)) return "ups"; if(/정류/.test(t)) return "rectifier"; if(/축전지|배터리|battery/i.test(t)) return "battery";
+  if(/앰프|amp|방송|PA|스피커|speaker|monitor panel|CATV|변조|modulat|영상|video|DVD|모니터|문자|카메라|CCTV/i.test(t)) return "cctv";
+  if(/광|전송|OLT|MUX|SDH|OTN|fiber|optic|스위치|switch|router|라우터/i.test(t)) return "transport";
+  if(/분전|차단기|PDU|전원 ?분배|distributor/i.test(t)) return "panel";
+  if(/단자|MDF|IDF|patch|패치/i.test(t)) return "mdf";
+  return "etc";
+}
 
 /* ============================================================
    5. 음성 (TTS + 음성명령) — 손이 자유로운 '안경' 사용감
@@ -12838,6 +13050,9 @@ const VOICE_CMDS = [
   [/적용|확정/,        ()=>AR.applyAI()],
   [/촬영|사진|찍어/,   ()=>AR.photo()],
   [/현행화|확인완료|일치/, ()=>AR.verify()],
+  [/인식|찾아/,        ()=>AR.liveNow()],
+  [/갱신|업데이트/,    ()=>AR.applyDiff()],
+  [/실장|모듈|슬롯/,   ()=>AR.rackNow()],
   [/읽어|다시/,        ()=>AR.speakStep()],
   [/완료|종료|끝/,     ()=>AR.finish()],
 ];
@@ -12849,6 +13064,8 @@ const AR = {
   stream:null, track:null, video:null, canvas:null, ctx:null, running:false, glasses:false, torch:false,
   detector:null, scanCv:null, lastScan:0, qr:null,
   equip:null, session:null, step:0, lastAI:null, busy:false, flash:0, msg:"", msgUntil:0,
+  live:{on:true, busy:false, lastAt:0, obs:[], fused:null, match:null, sig:null, backoff:0, ver:0, blob:null, status:"", said:""},
+  liveDiff:[],
 
   async open(equipId){
     ui.closeSheet();
@@ -12865,8 +13082,9 @@ const AR = {
     $("#arHint").textContent="";
     if("BarcodeDetector" in window){ try{ this.detector=new BarcodeDetector({formats:["qr_code"]}); }catch(_){ this.detector=null; } }
     this.scanCv=document.createElement("canvas");
+    this.live.on=!!S.settings.liveAI; this.liveReset(); $("#btnLive").classList.toggle("on",this.live.on);
     if(equipId) this.setEquip(findEquip(equipId));
-    else if(!this.equip) this.say("설비 QR 코드를 비춰 주세요");
+    else if(!this.equip) this.say(this.live.on&&S.settings.apiKey? "설비를 비추면 AI가 인식합니다" : "설비 QR 코드를 비춰 주세요");
     if(S.settings.voice && Voice.supported() && !Voice.on) this.toggleVoice(true);
     this.running=true; this.resize(); requestAnimationFrame(()=>this.loop());
     window.addEventListener("resize", this._rs=()=>this.resize());
@@ -12892,6 +13110,9 @@ const AR = {
     if(!this.running) return;
     const now=performance.now();
     if(now-this.lastScan>220 && this.video.readyState>=2){ this.lastScan=now; this.scan(); }
+    const L=this.live;
+    if(L.on && !this.equip && !L.busy && S.settings.apiKey && this.video.readyState>=2 && Date.now()>L.backoff
+       && Date.now()-L.lastAt > Math.max(2,+S.settings.liveSec||4)*1000) this.liveTick();
     this.draw();
     requestAnimationFrame(()=>this.loop());
   },
@@ -12924,6 +13145,7 @@ const AR = {
   setEquip(eq){
     if(!eq) return;
     this.equip=eq; this._unk=null; this.lastAI=null; this.step=0;
+    this.liveDiff = this.live.fused? ledgerDiff(eq,this.live.fused) : [];
     const checks=checksOf(eq.type);
     this.session={ id:uid("IN"), equipId:eq.id, equipName:eq.name, type:eq.type, inspector:S.settings.inspector, site:S.settings.site,
                    startedAt:Date.now(), items:checks.map(c=>({label:c, result:null, note:"", photo:null, ai:null})) };
@@ -12962,7 +13184,7 @@ const AR = {
     const eq=findEquip(s.equipId); if(eq){ eq.lastInspected=s.endedAt; eq.health=s.overall; }
     save();
     this.say(`점검 저장 완료. 종합 판정 ${s.overall}`);
-    this.session=null; this.equip=null; this.lastAI=null; this.qr=null; this.renderExtra();
+    this.session=null; this.equip=null; this.lastAI=null; this.qr=null; this.liveDiff=[]; this.liveReset(); this.renderExtra();
   },
 
   /* ---- 캡처 / 사진 / AI ---- */
@@ -13000,8 +13222,74 @@ const AR = {
   },
   verify(){
     if(!this.equip){ this.say("설비를 먼저 인식하세요"); return; }
-    this.equip.sync="일치"; this.equip.verifiedAt=Date.now(); this.equip.verifiedBy=S.settings.inspector; save();
-    this.say("현행화 확인 완료"); this.flash=Date.now();
+    const e=this.equip, d=this.liveDiff||[];
+    e.verifiedAt=Date.now(); e.verifiedBy=S.settings.inspector;
+    if(d.length){ e.sync="불일치"; e.memo=[e.memo, "현장확인 "+fmt(Date.now()).slice(0,10)+": "+d.map(x=>`${x.label} 대장=${x.ledger} 현장=${x.field}`).join(", ")].filter(Boolean).join(" / ");
+      save(); this.say(`현행화 불일치 ${d.length}건 기록. 갱신이라고 말하면 대장을 현장값으로 고칩니다`); }
+    else { e.sync="일치"; save(); this.say("현행화 확인 완료"); }
+    this.flash=Date.now(); this.live.ver++;
+  },
+  applyDiff(){
+    const e=this.equip, d=this.liveDiff||[]; if(!e||!d.length){ this.say("갱신할 차이가 없습니다"); return; }
+    d.forEach(x=>e[x.k]=x.field); e.sync="일치"; e.verifiedAt=Date.now(); e.verifiedBy=S.settings.inspector; e.updatedAt=Date.now();
+    e.memo=[e.memo,"대장 갱신 "+fmt(Date.now()).slice(0,10)+": "+d.map(x=>`${x.label} ${x.ledger}→${x.field}`).join(", ")].filter(Boolean).join(" / ");
+    this.liveDiff=[]; save(); this.say("대장을 현장값으로 갱신했습니다"); this.live.ver++;
+  },
+
+  async rackNow(){
+    if(!this.equip) return;
+    try{ const b=await this.capture(); this.say("랙 실장 분석 중. 잠시 기다려 주세요"); ui.openSheet("rack",{id:this.equip.id}); await ui.rackAnalyze(this.equip.id,"photo",[b]); }
+    catch(e){ toast(e.message,"bad"); }
+  },
+  /* ---- QR 없는 실시간 AI 인식 ---- */
+  liveReset(){ const L=this.live; L.obs=[]; L.fused=null; L.match=null; L.sig=null; L.blob=null; L.status=""; L.said=""; L.lastAt=0; L.ver++; },
+  liveNow(){ if(this.equip){ this.say("현재 설비 점검 중입니다"); return; } if(!S.settings.apiKey){ this.say("AI 키가 없습니다"); return; } this.live.lastAt=0; this.live.backoff=0; this.live.sig=null; },
+  toggleLive(){
+    this.live.on=!this.live.on; $("#btnLive").classList.toggle("on",this.live.on);
+    if(this.live.on && !S.settings.apiKey){ toast("실시간 AI 인식은 API 키가 필요합니다","bad"); }
+    this.toast(this.live.on?"실시간 AI 인식 켜짐":"실시간 AI 인식 꺼짐"); this.live.ver++;
+  },
+  frameSig(){
+    const c=this.sigCv||(this.sigCv=document.createElement("canvas")); c.width=32; c.height=18;
+    const x=c.getContext("2d",{willReadFrequently:true}); x.drawImage(this.video,0,0,32,18);
+    const d=x.getImageData(0,0,32,18).data, a=new Uint8Array(576);
+    for(let i=0;i<576;i++) a[i]=(d[i*4]+d[i*4+1]+d[i*4+2])/3; return a;
+  },
+  async liveTick(){
+    const L=this.live; L.lastAt=Date.now();
+    // 장면 변화 감지: 크게 바뀌면 새 설비로 보고 누적 초기화, 거의 같고 이미 충분히 판독했으면 호출 생략(사용량 절약)
+    const sig=this.frameSig();
+    if(L.sig){ let df=0; for(let i=0;i<576;i++) df+=Math.abs(sig[i]-L.sig[i]); df/=576;
+      if(df>28){ L.obs=[]; L.fused=null; L.match=null; L.said=""; L.blob=null; }
+      else if(df<5 && L.obs.length>=4){ L.status="같은 장면 — 충분히 판독됨 (다른 각도/명판을 비추면 재분석)"; L.sig=sig; return; } }
+    L.sig=sig; L.busy=true; L.status=L.obs.length?`AI 판독 중… (${L.obs.length+1}번째 프레임)`:"AI 판독 중…";
+    try{
+      const blob=await resizeImage(this.video,1024,0.78);
+      const cands=S.equips.slice(0,200).map(e=>[e.id,typeName(e.type),e.name,e.maker,e.model,e.serial,e.location].map(v=>String(v||"").replace(/\|/g,"/")).join("|"));
+      const r=await callGemini(PROMPT_LIVE(cands),[blob]);
+      if(this.equip){ L.busy=false; return; }               // 그 사이 QR로 잡혔으면 무시
+      if(r && r.found!==false && (r.maker||r.model||r.serial||r.type||r.name)){
+        r.at=Date.now(); L.obs.push(r); if(L.obs.length>6) L.obs.shift();
+        if(r.quality==="좋음"||!L.blob) L.blob=blob;
+        L.fused=fuseObs(L.obs); L.match=matchLedger(L.fused);
+        const m=L.match;
+        if(m.lock){ L.status=""; this.setEquip(m.top.e);
+          Voice.say(`AI 인식: ${m.top.e.name||typeName(m.top.e.type)}. ${m.top.why.join(", ")}. ${this.liveDiff.length?`대장과 다른 항목 ${this.liveDiff.length}개`:""}`); }
+        else if(m.ambiguous){ L.status=`후보 ${m.list.filter(x=>x.sc>=m.top.sc-0.5).length}대 — 시리얼/명판을 가까이 비추세요`; if(L.said!=="amb"){ L.said="amb"; Voice.say("같은 모델 후보가 여러 대입니다. 시리얼이 보이게 비춰 주세요"); } }
+        else if(!m.top && L.obs.length>=2){ L.status="대장에 없는 설비 — 신규 등록 가능"; if(L.said!=="new"){ L.said="new"; Voice.say(`${L.fused.maker||""} ${typeName(L.fused.type)}. 대장에 없는 설비입니다. 신규 등록 버튼을 누르세요`); } }
+        else L.status=r.tip? "💡 "+r.tip : "판독값 누적 중…";
+      }else{ L.status = r&&r.tip? "💡 "+r.tip : "설비가 보이지 않습니다 — 설비/명판을 화면 중앙에"; }
+    }catch(e){
+      if(/429|한도/.test(e.message)){ L.backoff=Date.now()+30000; L.status="AI 사용 한도 — 30초 후 재시도"; }
+      else { L.backoff=Date.now()+8000; L.status="AI 오류: "+e.message.slice(0,60); }
+    }
+    L.busy=false; L.ver++;
+  },
+  async registerFromLive(){
+    const f=this.live.fused||{}; let photo=null;
+    if(this.live.blob){ photo=uid("PH"); await DB.put(photo,this.live.blob); }
+    ui.openSheet("equipEdit",{prefill:{type:TYPES[f.type]?f.type:"etc", name:f.name||"", maker:f.maker||"", model:f.model||"", serial:f.serial||"", rating:f.rating||"", photo, sync:"신규",
+      memo:"AI 실시간 판독("+(f.n||0)+"프레임)"}});
   },
   async toggleTorch(){
     if(!this.track) return;
@@ -13027,6 +13315,15 @@ const AR = {
   renderExtra(finishing){
     const el=$("#arExtra"); let h="";
     if(this._unk && !this.equip) h+=`<button class="btn blue" onclick="ui.newEquip('${esc(this._unk).replace(/'/g,"")}')">＋ 이 QR로 설비 등록</button>`;
+    const L=this.live;
+    if(!this.equip && L.fused){
+      const m=L.match||{};
+      if(m.top && !m.lock) h+=`<button class="btn blue" onclick="AR.setEquip(findEquip('${esc(m.top.e.id)}'))">이 설비 맞음: ${esc((m.top.e.name||m.top.e.id).slice(0,14))}</button>`;
+      if(!m.lock && L.obs.length>=1) h+=`<button class="btn blue" onclick="AR.registerFromLive()">＋ 신규 등록(AI 판독값)</button>`;
+      h+=`<button class="btn" onclick="AR.liveReset()">🔁 다시 인식</button>`;
+    }
+    if(this.equip && !this.session?.items.some(i=>i.result)) h+=`<button class="btn" onclick="AR.rackNow()">🗄 실장 분석</button>`;
+    if(this.equip && this.liveDiff.length) h+=`<button class="btn blue" onclick="AR.applyDiff()">대장을 현장값으로 갱신(${this.liveDiff.length})</button>`;
     if(this.lastAI && RESULT_RANK[this.lastAI.status]!=null) h+=`<button class="btn" onclick="AR.applyAI()">AI 판정 적용(${esc(this.lastAI.status)})</button>`;
     if(this.session && (finishing || this.session.items.some(i=>i.result))) h+=`<button class="btn blue" onclick="AR.finish()">💾 점검 완료·저장</button>`;
     el.innerHTML=h; el.style.display=h?"flex":"none";
@@ -13039,7 +13336,7 @@ const AR = {
     if(this.glasses){ this.view(x,0,0,W/2,H); this.view(x,W/2,0,W/2,H); x.fillStyle="#000"; x.fillRect(W/2-2,0,4,H); }
     else this.view(x,0,0,W,H);
     // AI 버튼 상태가 바뀌면 하단 버튼 갱신
-    const k=(this.lastAI?this.lastAI.at:0)+":"+(this.session?this.session.items.filter(i=>i.result).length:-1)+":"+(this._unk||"")+":"+(this.equip?this.equip.id:"");
+    const k=(this.lastAI?this.lastAI.at:0)+":"+(this.session?this.session.items.filter(i=>i.result).length:-1)+":"+(this._unk||"")+":"+(this.equip?this.equip.id:"")+":"+this.live.ver;
     if(k!==this._k){ this._k=k; this.renderExtra(); }
   },
   /* 한쪽 화면(일반모드는 전체, 안경모드는 좌/우 눈) */
@@ -13052,9 +13349,26 @@ const AR = {
     const map=p=>({x:X+(p.x-sx)*sc, y:Y+(p.y-sy)*sc});
 
     // 조준선
-    if(!this.equip){ x.strokeStyle="rgba(59,214,198,.7)"; x.lineWidth=2*u; const s=70*u, cx=X+W/2, cy=Y+H/2;
+    const L=this.live, F=L.fused, liveOn=L.on&&S.settings.apiKey;
+    const showBox = !this.equip && F && F.box && F.box.length===4 && F.box[2]>F.box[0] && vw;
+    if(!this.equip && !showBox){ x.strokeStyle="rgba(59,214,198,.7)"; x.lineWidth=2*u; const s=70*u, cx=X+W/2, cy=Y+H/2;
       [[-1,-1],[1,-1],[1,1],[-1,1]].forEach(([a,b])=>{ x.beginPath(); x.moveTo(cx+a*s,cy+b*s-b*18*u); x.lineTo(cx+a*s,cy+b*s); x.lineTo(cx+a*s-a*18*u,cy+b*s); x.stroke(); });
-      this.text(x,"설비 QR 코드를 비춰 주세요",X+W/2,cy+s+26*u,14*u,"#cfe9e6","center"); }
+      this.text(x, liveOn?"설비를 비추세요 — AI 실시간 인식 (QR도 가능)":"설비 QR 코드를 비춰 주세요",X+W/2,cy+s+26*u,14*u,"#cfe9e6","center"); }
+    // 실시간 AI 인식 결과: 설비 위치 박스 + 프레임 누적 판독값(✓n/m = n개 프레임에서 같은 값)
+    if(showBox){
+      const [y0,x0,y1,x1]=F.box, A=map({x:x0/1000*vw,y:y0/1000*vh}), B=map({x:x1/1000*vw,y:y1/1000*vh});
+      const age=Date.now()-(L.obs[L.obs.length-1]||{}).at, col="#a78bfa";
+      x.save(); x.globalAlpha=age<5000?1:0.45; x.strokeStyle=col; x.lineWidth=3*u; x.setLineDash([10*u,6*u]); x.strokeRect(A.x,A.y,B.x-A.x,B.y-A.y); x.restore();
+      const ag=k=>F[k]?` ✓${F.agree[k]}/${F.n}`:"";
+      const m=L.match||{};
+      const lines=[`🧠 ${F.name||typeName(F.type)}`, F.maker?`제조사 ${F.maker}${ag("maker")}`:"", F.model?`모델 ${F.model}${ag("model")}`:"", F.serial?`S/N ${F.serial}${ag("serial")}`:"",
+        F.status?`상태 ${F.status}`:"", m.top? `대장 후보: ${m.top.e.name||m.top.e.id} (${m.top.why.join("·")})` : (F.n>=2?"대장에 없음 → 신규 등록 가능":"")];
+      this.panel(x,Math.max(X+12*u,Math.min(A.x,X+W-232*u)),Math.max(Y+(this.glasses?60:110)*u,A.y-8*u),lines,u,col,"topleft");
+    }
+    if(!this.equip && liveOn){
+      const st=(L.busy?"⏳ ":"🧠 ")+(L.status||"실시간 AI 인식 대기");
+      this.panel(x,X+W/2,Y+(this.glasses?14:64)*u,[st],u*0.9,"#a78bfa","top",W-24*u);
+    }
 
     // QR 위치 표시 + 설비 라벨(공간 앵커)
     const q=this.qr;
@@ -13120,7 +13434,7 @@ const AR = {
     L=L.slice(0,9);
     const w=Math.min(maxW, Math.max(...L.map(l=>x.measureText(l.t).width))+padd*2), h=L.length*lh+padd*2-(lh-fs);
     let X=ax, Y=ay;
-    if(anchor==="topright") X=ax-w; else if(anchor==="bottom"){ X=ax-w/2; Y=ay-h; } else if(anchor==="center"){ X=ax-w/2; Y=ay-h/2; }
+    if(anchor==="topright") X=ax-w; else if(anchor==="bottom"){ X=ax-w/2; Y=ay-h; } else if(anchor==="center"){ X=ax-w/2; Y=ay-h/2; } else if(anchor==="top"){ X=ax-w/2; }
     x.fillStyle="rgba(8,14,26,.78)"; this.rr(x,X,Y,w,h,8*u); x.fill();
     x.fillStyle=col; this.rr(x,X,Y,4*u,h,2*u); x.fill();
     x.textAlign="left";
@@ -13163,8 +13477,9 @@ function renderHome(){
     <ol style="margin:0;padding-left:20px;line-height:1.9">
       <li><b>설정</b>에서 점검자·사업장, Gemini API 키 입력</li>
       <li><b>설비 현행화</b> → 기존 대장 CSV 가져오기 또는 명판 촬영으로 AI 자동등록</li>
-      <li><b>QR 라벨 인쇄</b> 후 설비에 부착</li>
-      <li><b>AR 점검</b> → QR 비추기 → 화면 안내대로 정상/주의/불량 (음성 가능)</li>
+      <li><b>AR 점검</b> → 설비를 비추면 <b>🧠 AI가 실시간 인식</b>(QR 없이) → 대장과 자동 대조</li>
+      <li>대장에 없으면 <b>신규 등록</b>, 다르면 <b>대장 갱신</b> → QR 라벨 인쇄·부착(이후엔 QR로 즉시 인식)</li>
+      <li>화면 안내대로 정상/주의/불량 판정 (음성 가능)</li>
       <li>애매하면 <b>AI 진단</b> → "적용"이라고 말하면 반영</li>
       <li><b>👓 안경모드</b>: 휴대폰을 VR 헤드마운트에 끼우면 양손이 자유로운 시제품 AI안경</li>
     </ol>
@@ -13180,10 +13495,13 @@ function equipItem(e){
   </div>`;
 }
 let equipFilter={q:"", sync:""};
-function renderEquip(){
+function filteredEquips(){
   const q=equipFilter.q.toLowerCase();
-  const list=S.equips.filter(e=>(!equipFilter.sync||(e.sync||"미확인")===equipFilter.sync) &&
+  return S.equips.filter(e=>(!equipFilter.sync||(e.sync||"미확인")===equipFilter.sync) &&
     (!q||[e.id,e.name,e.maker,e.model,e.serial,e.location,typeName(e.type)].join(" ").toLowerCase().includes(q)));
+}
+function renderEquip(){
+  const list=filteredEquips(), mode=S.equipView||"tree";
   $("#page-equip").innerHTML=`
   <div class="card"><div class="card-b">
     <div class="row">
@@ -13197,6 +13515,11 @@ function renderEquip(){
   </div></div>
   <div class="card">
     <div class="card-b" style="padding-bottom:0">
+      <div class="seg">
+        <button class="${mode==="tree"?"on":""}" onclick="S.equipView='tree';save();renderEquip()">🏢 건물·층·설비</button>
+        <button class="${mode==="list"?"on":""}" onclick="S.equipView='list';save();renderEquip()">☰ 목록</button>
+        <button onclick="ui.openSheet('roomPick')">🗺 배치도</button>
+      </div>
       <div class="toolbar">
         <input class="inp" placeholder="ID·명칭·모델·위치 검색" value="${esc(equipFilter.q)}" oninput="equipFilter.q=this.value;renderEquipList()">
         <select class="inp" style="flex:0 0 110px" onchange="equipFilter.sync=this.value;renderEquipList()">
@@ -13208,10 +13531,31 @@ function renderEquip(){
   </div>`;
   renderEquipList(list);
 }
+function syncRate(arr){ const v=arr.filter(e=>e.sync==="일치"||e.sync==="신규").length; return {v,n:arr.length,p:arr.length?Math.round(v/arr.length*100):0}; }
+function cntHtml(arr){ const r=syncRate(arr), bad=arr.filter(e=>e.sync==="불일치").length;
+  return `<span class="cnt">${bad?`<span class="tag bad">불일치 ${bad}</span>`:""}<span class="mini-prog"><i style="width:${r.p}%"></i></span>${r.v}/${r.n}</span>`; }
+/* 건물 > 층 > 실 > 설비종류 > 설비 트리 */
+function renderTree(list){
+  const T={};
+  list.forEach(e=>{ const L=locOf(e); ((T[L.b]??={})[L.f]??={}); (T[L.b][L.f][L.r]??=[]).push(e); });
+  const all=o=>Object.values(o).flatMap(x=>Array.isArray(x)?x:all(x));
+  const open=list.length<=40 || !!equipFilter.q;
+  return `<div class="tree">${Object.keys(T).sort((a,b)=>(a===NOLOC)-(b===NOLOC)||a.localeCompare(b)).map(b=>`
+    <details class="lv1" open><summary>🏢 ${esc(b)} ${cntHtml(all(T[b]))}</summary>
+    ${Object.keys(T[b]).sort((x,y)=>floorOrder(x)-floorOrder(y)).map(f=>`
+      <details class="lv2" ${open?"open":""}><summary>🏬 ${esc(f)} ${cntHtml(all(T[b][f]))}</summary>
+      ${Object.keys(T[b][f]).sort((x,y)=>(x===NOLOC)-(y===NOLOC)||x.localeCompare(y)).map(r=>{ const arr=T[b][f][r], key=roomKey(b,f,r), lay=S.layouts[key];
+        const byType={}; arr.forEach(e=>(byType[e.type]??=[]).push(e));
+        return `<details class="lv3" ${open?"open":""}><summary>🚪 ${esc(r)} <span class="cnt"><button class="btn sm" onclick="event.preventDefault();ui.openSheet('layout',{key:'${esc(key).replace(/'/g,"")}'})">🗺${lay&&lay.items.length?" "+lay.items.length:""}</button></span> ${cntHtml(arr)}</summary>
+          ${Object.keys(byType).map(t=>`<div class="tg">${typeIc(t)} ${esc(typeName(t))} · ${byType[t].length}</div>${byType[t].map(equipItem).join("")}`).join("")}
+        </details>`; }).join("")}
+      </details>`).join("")}
+    </details>`).join("")}</div>`;
+}
 function renderEquipList(list){
-  if(!list){ const q=equipFilter.q.toLowerCase();
-    list=S.equips.filter(e=>(!equipFilter.sync||(e.sync||"미확인")===equipFilter.sync) && (!q||[e.id,e.name,e.maker,e.model,e.serial,e.location,typeName(e.type)].join(" ").toLowerCase().includes(q))); }
+  if(!list) list=filteredEquips();
   const el=$("#equipList"); if(!el) return;
+  if((S.equipView||"tree")==="tree" && list.length){ el.innerHTML=renderTree(list); hydratePhotos(el); return; }
   el.innerHTML=list.map(equipItem).join("")||`<div class="empty">${S.equips.length?"검색 결과 없음":"등록된 설비가 없습니다.<br>기존 설비대장 CSV를 가져오거나 새로 등록하세요."}</div>`;
   hydratePhotos(el);
 }
@@ -13241,12 +13585,14 @@ function renderSet(){
     <label class="f">모델 (비워두면 자동 선택)<input class="inp" id="sModel" list="models" value="${esc(st.model)}" placeholder="자동"></label>
     <datalist id="models">${(st.models||[]).map(m=>`<option value="${esc(m)}">`).join("")}</datalist>
     <button class="btn block" style="margin-bottom:11px" onclick="ui.pickModel()">🔄 사용 가능한 모델 자동 선택 / 키 확인</button>
+    <label class="chk"><input type="checkbox" id="sLive" ${st.liveAI?"checked":""}> AR 화면에서 QR 없이 실시간 AI 인식</label>
+    <label class="f">실시간 인식 간격(초) — 짧을수록 빠르지만 사용량 증가<input class="inp" id="sLiveSec" type="number" min="2" max="30" value="${esc(st.liveSec||4)}"></label>
     <p class="note">키는 이 휴대폰에만 저장되며 백업 파일에도 포함되지 않습니다. 키 발급: Google AI Studio.</p>
   </div></div>
   <div class="card"><div class="card-h"><h2>음성 (핸즈프리)</h2></div><div class="card-b">
     <label class="chk"><input type="checkbox" id="sTts" ${st.tts?"checked":""}> 음성 안내(TTS)</label>
     <label class="chk"><input type="checkbox" id="sVoice" ${st.voice?"checked":""}> AR 시작 시 음성명령 자동 켜기</label>
-    <p class="note">명령어: <b>정상 · 주의 · 불량 · 다음 · 이전 · 진단 · 적용 · 촬영 · 현행화 · 다시 · 완료</b></p>
+    <p class="note">명령어: <b>정상 · 주의 · 불량 · 다음 · 이전 · 진단 · 적용 · 촬영 · 현행화 · 갱신 · 인식 · 다시 · 완료</b></p>
   </div></div>
   <div class="row" style="margin-top:14px"><button class="btn pri" onclick="ui.saveSettings()">설정 저장</button></div>
   <div class="card" style="margin-top:14px"><div class="card-h"><h2>점검항목 편집</h2></div><div class="card-b">
@@ -13263,11 +13609,14 @@ function renderSet(){
    ============================================================ */
 const sheets = {
   equipEdit(b, arg){
-    const e = arg.id && findEquip(arg.id) || {id:arg.newId||newEquipId(), type:"rack", sync:"신규", isNew:true};
+    const e = arg.id && findEquip(arg.id) || {id:arg.newId||newEquipId(), type:"rack", sync:"신규", building:S.here.building||S.settings.site||"", floor:S.here.floor||"", room:S.here.room||"", ...(arg.prefill||{}), isNew:true};
+    if(!e.isNew) splitLoc(e);
+    const dl=(id,k)=>`<datalist id="${id}">${uniq(S.equips.map(x=>x[k])).map(v=>`<option value="${esc(v)}">`).join("")}</datalist>`;
     const opt=Object.entries(TYPES).map(([k,v])=>`<option value="${k}" ${e.type===k?"selected":""}>${v.ic} ${v.name}</option>`).join("");
     b.innerHTML=`
       <button class="btn blue block" id="btnNP" style="margin-bottom:12px">📸 명판 촬영 → AI 자동입력</button>
-      <div id="npPrev"></div>
+      <div id="npPrev">${e.photo?`<img data-photo="${esc(e.photo)}" style="width:100%;border-radius:10px;margin-bottom:10px">`:""}</div>
+      ${arg.prefill?`<p class="note" style="margin:0 0 11px">🧠 AI 실시간 판독값이 채워졌습니다. 현장 명판과 대조 후 저장하세요.</p>`:""}
       <label class="f">설비 ID (QR 내용)<input class="inp mono" id="eId" value="${esc(e.id)}" ${e.isNew?"":"readonly"}></label>
       <label class="f">종류<select class="inp" id="eType">${opt}</select></label>
       <label class="f">명칭<input class="inp" id="eName" value="${esc(e.name)}" placeholder="예: UPS 30kVA #1"></label>
@@ -13279,9 +13628,15 @@ const sheets = {
         <label class="f">설치일<input class="inp" id="eInst" type="date" value="${esc(e.installed)}"></label>
         <label class="f">현행화 상태<select class="inp" id="eSync">${SYNC.map(s=>`<option ${(e.sync||"미확인")===s?"selected":""}>${s}</option>`).join("")}</select></label>
       </div>
-      <label class="f">위치 (층/실/랙)<input class="inp" id="eLoc" value="${esc(e.location)}" placeholder="3F 전송실 R-05"></label>
+      <div class="grid2">
+        <label class="f">건물<input class="inp" id="eBld" list="dlB" value="${esc(e.building)}" placeholder="본관"></label>
+        <label class="f">층<input class="inp" id="eFlr" list="dlF" value="${esc(e.floor)}" placeholder="3F / B1"></label>
+        <label class="f">실(공간)<input class="inp" id="eRoom" list="dlR" value="${esc(e.room)}" placeholder="전송실"></label>
+        <label class="f">랙/세부위치<input class="inp" id="eRack" value="${esc(e.rack)}" placeholder="R-05 3U"></label>
+      </div>${dl("dlB","building")}${dl("dlF","floor")}${dl("dlR","room")}
       <label class="f">비고<textarea class="inp" id="eMemo" rows="2">${esc(e.memo)}</textarea></label>
       <div class="row"><button class="btn pri" id="eSave">저장</button></div>`;
+    hydratePhotos(b);
     let photoId=e.photo||null;
     b.querySelector("#btnNP").onclick=async()=>{
       const f=await pickFile("image/*",true); if(!f) return;
@@ -13304,11 +13659,16 @@ const sheets = {
       const id=v("#eId"); if(!id){ toast("설비 ID를 입력하세요","bad"); return; }
       if(e.isNew && findEquip(id)){ toast("이미 있는 ID입니다","bad"); return; }
       const rec={...e, id, type:v("#eType"), name:v("#eName"), maker:v("#eMaker"), model:v("#eModel"), serial:v("#eSerial"), rating:v("#eRating"),
-        installed:v("#eInst"), sync:v("#eSync"), location:v("#eLoc"), memo:v("#eMemo"), photo:photoId, updatedAt:Date.now()};
+        installed:v("#eInst"), sync:v("#eSync"), building:v("#eBld"), floor:floorNorm(v("#eFlr")), room:v("#eRoom"), rack:v("#eRack"), memo:v("#eMemo"), photo:photoId, updatedAt:Date.now()};
+      rec.location=composeLoc(rec);
+      S.here={building:rec.building, floor:rec.floor, room:rec.room};   // 다음 등록 때 같은 위치 자동 입력
       delete rec.isNew;
       if(e.isNew){ rec.createdAt=Date.now(); S.equips.unshift(rec); } else Object.assign(findEquip(e.id),rec);
-      save(); ui.closeSheet(); toast("저장됨","good");
-      if(AR.running){ AR._unk=null; AR.setEquip(findEquip(id)); } else render();
+      if(arg.layoutKey){ const L=S.layouts[arg.layoutKey], it=L&&L.items.find(i=>i.id===arg.layoutItem); if(it){ it.equipId=id; it.label=rec.name||it.label; } }
+      save(); toast("저장됨","good");
+      if(arg.layoutKey){ ui.openSheet("layout",{key:arg.layoutKey}); return; }
+      ui.closeSheet();
+      if(AR.running){ AR._unk=null; AR.liveReset(); AR.setEquip(findEquip(id)); } else render();
     };
   },
   equipView(b, id){
@@ -13328,7 +13688,12 @@ const sheets = {
       <div class="row" style="margin-top:12px">
         <button class="btn pri" onclick="AR.open('${esc(e.id)}')">🕶️ AR 점검</button>
         <button class="btn" onclick="ui.openSheet('equipEdit',{id:'${esc(e.id)}'})">수정</button>
+        ${e.room?`<button class="btn" onclick="ui.openSheet('layout',{key:'${esc(roomKey(e.building,e.floor,e.room)).replace(/'/g,"")}',hl:'${esc(e.id)}'})">🗺 배치도</button>`:""}
       </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn blue" onclick="ui.openSheet('rack',{id:'${esc(e.id)}'})">🗄 랙 실장 분석${e.rackScan?` (${e.rackScan.units.filter(isGear).length}대)`:""}</button>
+      </div>
+      ${e.parent&&findEquip(e.parent)?`<p class="muted" style="font-size:12.5px;margin:8px 0 0">상위 랙: <a style="color:var(--brand)" onclick="ui.openSheet('rack',{id:'${esc(e.parent)}'})">${esc(findEquip(e.parent).name||e.parent)} #${esc(e.rackPos||"")}</a></p>`:""}
       <div class="row" style="margin-top:8px">
         <button class="btn" onclick="ui.setSync('${esc(e.id)}','일치')">✔ 현행화 일치</button>
         <button class="btn" onclick="ui.setSync('${esc(e.id)}','불일치')">✖ 불일치</button>
@@ -13351,6 +13716,131 @@ const sheets = {
       </div></div>`).join("")}
       <div class="row" style="margin-top:12px"><button class="btn" onclick="ui.printReport('${esc(s.id)}')">🖨️ 보고서 인쇄/PDF</button><button class="btn bad" onclick="ui.delInsp('${esc(s.id)}')">삭제</button></div>`;
     hydratePhotos(b);
+  },
+  rack(b, arg){
+    const e=findEquip(arg.id); if(!e) return;
+    const R=e.rackScan, prev=(e.rackHist||[])[0];
+    const d=R? rackDiff(prev,R) : {added:[],removed:[]};
+    const addSet=new Set(d.added);
+    const gear=R? R.units.filter(isGear) : [], spare=R? R.units.filter(u=>!isGear(u)&&/블랭크|빈공간/.test(u.kind)).reduce((a,u)=>a+(+u.u||1),0) : 0;
+    const alarms=gear.filter(u=>u.alarm).length;
+    const kids=S.equips.filter(x=>x.parent===e.id);
+    b.innerHTML=`
+      <div style="margin-bottom:8px"><b style="font-size:16px">🗄 ${esc(e.name||e.id)}</b><div class="muted" style="font-size:12px">${esc(e.location||"")}${R?" · 분석 "+fmt(R.at):""}</div></div>
+      <p class="note" style="margin:0 0 10px">📸 <b>정확도 높이는 촬영법</b>: ① 문을 열고 랙 전체 1장 → ② 위에서 아래로 2~4U씩 근접 촬영(명판 글자가 읽히게) → 사진을 한꺼번에 선택. 유리문 반사·옆 랙이 찍히지 않게.</p>
+      <div class="row"><button class="btn pri" id="rkPh">📷 사진 여러 장으로 분석</button></div>
+      <div class="row" style="margin-top:8px"><button class="btn" id="rkVd">🎥 위→아래 영상으로 분석</button></div>
+      <div id="rkStat"></div>
+      ${R?`
+        ${R.photos&&R.photos.length?`<div class="thumbs">${R.photos.map(id=>`<img data-photo="${esc(id)}">`).join("")}</div>`:""}
+        <div class="stats" style="margin:10px 0">
+          <div class="stat"><b>${gear.length}</b><span>실장 장비</span></div>
+          <div class="stat"><b>${spare||0}U</b><span>블랭크·빈 공간</span></div>
+          <div class="stat"><b style="color:${alarms?"var(--bad)":"inherit"}">${alarms}</b><span>경보 의심</span></div>
+          <div class="stat"><b>${kids.length}</b><span>대장 등록</span></div>
+        </div>
+        ${prev?`<div class="note" style="margin-bottom:10px">🔄 이전 분석(${fmt(prev.at).slice(0,10)}) 대비: 추가 ${d.added.length} · 제거 ${d.removed.length}
+          ${d.removed.length?`<br><span style="color:var(--bad)">제거/미확인: ${d.removed.map(u=>esc(u.model||u.name||u.function)).join(", ")}</span>`:""}</div>`:""}
+        <div class="rk">
+          <div class="rkh">${esc(R.label||e.name||"RACK")}</div>
+          ${R.units.map((u,i)=>isGear(u)?`<div class="ru ${u.alarm?"alarm":""} ${addSet.has(u)?"add":""}" style="min-height:${Math.max(1,Math.min(6,+u.u||1))*20+8}px" onclick="this.classList.toggle('open')">
+              <span class="no">${i+1}</span>
+              <div class="tx"><b>${esc([u.maker,u.model].filter(Boolean).join(" ")||u.name||"판독 불가")}</b>
+                <span>${esc(u.function||u.name||"")}${u.label?` · 🏷 ${esc(u.label)}`:""}</span>
+                <div class="det">${u.name?`장비명: ${esc(u.name)}<br>`:""}${u.status?`상태: ${esc(u.status)}<br>`:""}${u.u?`높이: 약 ${esc(u.u)}U<br>`:""}신뢰도: ${Math.round((u.confidence||0)*100)}%
+                  ${(u.slots||[]).filter(x=>x.module||x.slot).length?`<br><b>슬롯/모듈</b><br>${u.slots.map(x=>`· ${esc(x.slot)} ${esc(x.module)} ${esc(x.status||"")}`).join("<br>")}`:""}</div></div>
+              ${u.alarm?`<span class="tag bad">경보</span>`:addSet.has(u)?`<span class="tag good">신규</span>`:""}
+            </div>`:`<div class="ru blank" style="min-height:${Math.max(1,Math.min(6,+u.u||1))*12+6}px"><span class="no">${i+1}</span><div class="tx">${esc(u.kind)}${u.u?` ${esc(u.u)}U`:""}</div></div>`).join("")}
+        </div>
+        ${(R.unreadable||[]).length?`<p class="faint" style="font-size:12px;margin:8px 0 0">판독 못한 부분: ${R.unreadable.map(esc).join(" / ")}</p>`:""}
+        ${R.tip?`<p class="faint" style="font-size:12px;margin:4px 0 0">💡 ${esc(R.tip)}</p>`:""}
+        <div class="row" style="margin-top:12px">
+          <button class="btn blue" id="rkReg">실장 장비를 대장에 반영 (${gear.length})</button>
+          <button class="btn" id="rkCsv">📤 실장 CSV</button>
+        </div>`:`<div class="empty">아직 분석 기록이 없습니다</div>`}`;
+    hydratePhotos(b);
+    b.querySelector("#rkPh").onclick=()=>ui.rackAnalyze(e.id,"photo");
+    b.querySelector("#rkVd").onclick=()=>ui.rackAnalyze(e.id,"video");
+    const rg=b.querySelector("#rkReg"); if(rg) rg.onclick=()=>ui.rackToLedger(e.id);
+    const cs=b.querySelector("#rkCsv"); if(cs) cs.onclick=()=>{
+      const rows=[["랙","순서","구분","높이U","제조사","모델","장비명","기능","라벨","상태","경보","슬롯/모듈","신뢰도"]];
+      R.units.forEach((u,i)=>rows.push([R.label||e.name,i+1,u.kind,u.u,u.maker,u.model,u.name,u.function,u.label,u.status,u.alarm?"Y":"",(u.slots||[]).map(x=>[x.slot,x.module,x.status].filter(Boolean).join(":")).join(" | "),Math.round((u.confidence||0)*100)]));
+      download(`랙실장_${(e.name||e.id).replace(/[\\/:*?"<>|\s]/g,"_")}_${today()}.csv`, toCSV(rows), "text/csv"); };
+  },
+  roomPick(b){
+    const keys=uniq([...S.equips.filter(e=>e.room).map(e=>roomKey(e.building,e.floor,e.room)), ...Object.keys(S.layouts)]);
+    b.innerHTML=`<p class="note" style="margin:0 0 12px">공간(실)을 고르거나 새로 입력하세요. 공간을 동영상으로 촬영하면 AI가 설비 배치도를 만듭니다.</p>
+      <div class="list card" style="box-shadow:none;margin-bottom:14px">${keys.map(k=>{ const n=S.equips.filter(e=>roomKey(e.building,e.floor,e.room)===k).length, L=S.layouts[k];
+        return `<div class="item" onclick="ui.openSheet('layout',{key:'${esc(k).replace(/'/g,"")}'})"><div class="ic">🗺</div><div class="tx"><b>${esc(roomName(k))}</b><span>설비 ${n} · 배치 ${L?L.items.length:0}${L&&L.updatedAt?" · "+fmt(L.updatedAt):""}</span></div></div>`; }).join("")||`<div class="empty">아직 공간이 없습니다</div>`}</div>
+      <h3 style="font-size:14px;margin-bottom:8px">새 공간</h3>
+      <div class="grid2">
+        <label class="f">건물<input class="inp" id="rB" list="rdB" value="${esc(S.here.building||S.settings.site||"")}"></label>
+        <label class="f">층<input class="inp" id="rF" list="rdF" value="${esc(S.here.floor||"")}" placeholder="3F"></label>
+      </div>
+      <label class="f">실(공간)<input class="inp" id="rR" list="rdR" value="${esc(S.here.room||"")}" placeholder="전송실"></label>
+      <datalist id="rdB">${uniq(S.equips.map(e=>e.building)).map(v=>`<option value="${esc(v)}">`).join("")}</datalist>
+      <datalist id="rdF">${uniq(S.equips.map(e=>e.floor)).map(v=>`<option value="${esc(v)}">`).join("")}</datalist>
+      <datalist id="rdR">${uniq(S.equips.map(e=>e.room)).map(v=>`<option value="${esc(v)}">`).join("")}</datalist>
+      <button class="btn pri block" id="rGo">배치도 열기</button>`;
+    b.querySelector("#rGo").onclick=()=>{ const B=b.querySelector("#rB").value.trim(), F=floorNorm(b.querySelector("#rF").value), R=b.querySelector("#rR").value.trim();
+      if(!R) return toast("실(공간) 이름을 입력하세요","bad"); S.here={building:B,floor:F,room:R}; save(); ui.openSheet("layout",{key:roomKey(B,F,R)}); };
+  },
+  layout(b, arg){
+    const key=arg.key, [B,F,R]=key.split("¦").map(x=>x===NOLOC?"":x);
+    const L=S.layouts[key]??={items:[], updatedAt:0};
+    const roomEq=S.equips.filter(e=>roomKey(e.building,e.floor,e.room)===key);
+    const placed=new Set(L.items.map(i=>i.equipId).filter(Boolean));
+    const unplaced=roomEq.filter(e=>!placed.has(e.id));
+    const moved=L.items.filter(i=>{ const e=i.equipId&&findEquip(i.equipId); return e && roomKey(e.building,e.floor,e.room)!==key; });
+    const cls=i=>{ if(!i.equipId) return "new"; const e=findEquip(i.equipId); if(!e) return "unk"; if(e.health==="불량"||e.sync==="불일치") return "bad"; if(e.health==="주의") return "warn"; return ""; };
+    const lab=i=>{ const e=i.equipId&&findEquip(i.equipId); return esc(e? (e.name||typeName(e.type)) : (i.label||typeName(i.type))); };
+    b.innerHTML=`
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><b style="font-size:16px">🗺 ${esc(roomName(key))}</b><span class="muted" style="font-size:12px;margin-left:auto">${L.updatedAt?fmt(L.updatedAt):""}</span></div>
+      ${L.desc?`<p class="muted" style="font-size:12.5px;margin:0 0 8px">${esc(L.desc)}</p>`:""}
+      <div class="plan" id="plan"><div class="door"></div>
+        ${L.items.map(i=>`<div class="pi ${cls(i)} ${arg.hl&&i.equipId===arg.hl?"hl":""}" data-id="${esc(i.id)}" style="left:${i.x}%;top:${i.y}%;width:${i.w}%;height:${i.h}%">${lab(i)}</div>`).join("")}
+      </div>
+      <div class="legend"><span><i style="border-color:#4ad991"></i>대장 일치</span><span><i style="border-color:#f4685f"></i>불일치·불량</span><span><i style="border-color:#f4b740"></i>주의</span><span><i style="border-color:#a78bfa;border-style:dashed"></i>미등록(탭→등록)</span></div>
+      <p class="faint" style="font-size:12px;margin:2px 0 12px">끌어서 위치 조정 · 탭하면 설비 정보</p>
+      <div class="row">
+        <button class="btn pri" id="lyVid">🎥 동영상 촬영 → AI 배치</button>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="btn" id="lyFile">📁 저장된 영상 선택</button>
+        ${L.video?`<button class="btn" id="lyPlay">▶ 촬영 영상 보기</button>`:""}
+      </div>
+      <div id="lyStat"></div><div id="lyVideo"></div>
+      ${moved.length?`<div class="note" style="margin-top:12px">⚠️ 대장 위치가 이 공간과 다른 설비 ${moved.length}대: ${moved.map(i=>esc(findEquip(i.equipId).name||i.equipId)).join(", ")}
+        <div class="row" style="margin-top:8px"><button class="btn sm" id="lyMove">대장 위치를 이 공간으로 수정</button></div></div>`:""}
+      ${unplaced.length?`<h3 style="font-size:13.5px;margin:14px 0 6px">배치 안 된 설비 (탭하면 배치도에 추가)</h3>
+        <div class="chips">${unplaced.map(e=>`<button class="btn" data-add="${esc(e.id)}">${typeIc(e.type)} ${esc(e.name||e.id)}</button>`).join("")}</div>`:""}
+      <div class="row" style="margin-top:14px">
+        <button class="btn" onclick="ui.openSheet('equipEdit',{prefill:{building:'${esc(B)}',floor:'${esc(F)}',room:'${esc(R)}'}})">＋ 이 공간에 설비 등록</button>
+        ${L.items.length?`<button class="btn bad" id="lyClr">배치 초기화</button>`:""}
+      </div>`;
+    hydratePhotos(b);
+    const plan=b.querySelector("#plan");
+    // 끌기(이동) / 탭(열기)
+    plan.querySelectorAll(".pi").forEach(el=>{
+      el.onpointerdown=ev=>{
+        const it=L.items.find(i=>i.id===el.dataset.id); if(!it) return;
+        const r=plan.getBoundingClientRect(), sx=ev.clientX, sy=ev.clientY, ox=it.x, oy=it.y; let moved=false;
+        el.setPointerCapture(ev.pointerId); el.classList.add("drag");
+        el.onpointermove=m=>{ const dx=(m.clientX-sx)/r.width*100, dy=(m.clientY-sy)/r.height*100; if(Math.abs(dx)+Math.abs(dy)>1.2) moved=true;
+          it.x=Math.max(0,Math.min(100-it.w,ox+dx)); it.y=Math.max(0,Math.min(100-it.h,oy+dy)); el.style.left=it.x+"%"; el.style.top=it.y+"%"; };
+        el.onpointerup=()=>{ el.onpointermove=null; el.classList.remove("drag");
+          if(moved){ L.updatedAt=Date.now(); save(); return; }
+          if(it.equipId && findEquip(it.equipId)) ui.openSheet("equipView",it.equipId);
+          else ui.registerLayoutItem(key,it); };
+      };
+    });
+    b.querySelectorAll("[data-add]").forEach(x=>x.onclick=()=>{ const e=findEquip(x.dataset.add); const n=L.items.length;
+      L.items.push({id:uid("LI"), equipId:e.id, type:e.type, label:e.name, x:5+(n*14)%80, y:8+Math.floor(n/6)*14, w:12, h:9}); L.updatedAt=Date.now(); save(); ui.openSheet("layout",{key}); });
+    b.querySelector("#lyVid").onclick=()=>ui.layoutFromVideo(key,true);
+    b.querySelector("#lyFile").onclick=()=>ui.layoutFromVideo(key,false);
+    const pl=b.querySelector("#lyPlay"); if(pl) pl.onclick=async()=>{ const blob=await DB.get(L.video); if(!blob) return toast("영상이 없습니다"); b.querySelector("#lyVideo").innerHTML=`<video src="${URL.createObjectURL(blob)}" controls playsinline style="width:100%;border-radius:10px;margin-top:10px"></video>`; };
+    const mv=b.querySelector("#lyMove"); if(mv) mv.onclick=()=>{ moved.forEach(i=>{ const e=findEquip(i.equipId); e.building=B; e.floor=F; e.room=R; e.location=composeLoc(e); e.sync="불일치"; e.updatedAt=Date.now(); }); save(); toast("대장 위치 수정 — 현행화 상태 '불일치'로 기록","good"); ui.openSheet("layout",{key}); };
+    const cl=b.querySelector("#lyClr"); if(cl) cl.onclick=()=>{ if(!confirm("이 공간의 배치도를 지울까요? (설비 대장은 유지)")) return; L.items=[]; save(); ui.openSheet("layout",{key}); };
   },
   pickEquip(b){
     b.innerHTML=`<input class="inp" placeholder="검색" id="pq" style="margin-bottom:10px"><div class="list card" id="pl" style="box-shadow:none"></div>`;
@@ -13378,7 +13868,7 @@ const ui = {
   tab(name){ S.tab=name; save(); document.querySelectorAll(".pages").forEach(p=>p.classList.toggle("on",p.id==="page-"+name));
     document.querySelectorAll("nav button[data-tab]").forEach(b=>b.classList.toggle("on",b.dataset.tab===name)); render(); scrollTo(0,0); },
   openSheet(kind,arg){
-    const titles={equipEdit:"설비 등록/수정", equipView:"설비 정보", inspView:"점검 결과", pickEquip:"점검할 설비 선택", checklist:"점검항목 편집", settings:"설정"};
+    const titles={equipEdit:"설비 등록/수정", equipView:"설비 정보", inspView:"점검 결과", pickEquip:"점검할 설비 선택", checklist:"점검항목 편집", settings:"설정", roomPick:"공간 선택 · 배치도", layout:"설비 배치도", rack:"랙 실장 분석"};
     if(kind==="settings"){ this.tab("set"); return; }
     $("#sheetTitle").textContent=titles[kind]||""; const b=$("#sheetBody"); b.innerHTML=""; b.scrollTop=0; sheets[kind](b,arg);
     $("#scrim").classList.add("on"); $("#sheet").classList.add("on");
@@ -13394,7 +13884,91 @@ const ui = {
   saveSettings(){
     const st=S.settings; st.inspector=$("#sInsp").value.trim(); st.site=$("#sSite").value.trim();
     st.apiKey=$("#sKey").value.trim(); const nm=$("#sModel").value.trim(); if(nm!==st.model) st.model=nm;
-    st.tts=$("#sTts").checked; st.voice=$("#sVoice").checked; save(); render(); toast("설정 저장됨","good");
+    st.tts=$("#sTts").checked; st.voice=$("#sVoice").checked; st.liveAI=$("#sLive").checked; st.liveSec=Math.max(2,Math.min(30,+$("#sLiveSec").value||4)); save(); render(); toast("설정 저장됨","good");
+  },
+  async layoutFromVideo(key, capture){
+    if(!S.settings.apiKey) return toast("AI 배치에는 API 키가 필요합니다(설정)","bad");
+    const el=capture? $("#filePick") : $("#filePickAny");
+    el.accept="video/*"; if(capture) el.setAttribute("capture","environment"); el.value="";
+    const file=await new Promise(res=>{ el.onchange=()=>res(el.files[0]||null); el.click(); });
+    el.accept="image/*";
+    if(!file) return;
+    const st=$("#lyStat"), say=t=>{ if(st) st.innerHTML=`<p class="note" style="margin-top:10px">⏳ ${esc(t)}</p>`; };
+    try{
+      say("영상에서 장면 추출 중…");
+      const {frames,duration}=await videoFrames(file, 10);
+      say(`AI가 ${frames.length}개 장면을 분석해 배치도를 만드는 중… (영상 ${Math.round(duration)}초, 30초~1분 소요)`);
+      const roomEq=S.equips.filter(e=>roomKey(e.building,e.floor,e.room)===key), others=S.equips.filter(e=>!roomEq.includes(e));
+      const cands=[...roomEq,...others].slice(0,200).map(e=>[e.id,typeName(e.type),e.name,e.maker,e.model,e.serial,e.location].map(v=>String(v||"").replace(/\|/g,"/")).join("|"));
+      const r=await callGemini(PROMPT_LAYOUT(roomName(key),frames.length,cands), frames, {maxTokens:8192});
+      const L=S.layouts[key]??={items:[]};
+      const used=new Set(); let matched=0, fresh=0;
+      const items=[];
+      for(const it of (r.items||[])){
+        let eq=it.match_id && findEquip(it.match_id);
+        if(!eq && it.serial) eq=S.equips.find(e=>e.serial && normSN(e.serial)===normSN(it.serial));
+        if(eq && used.has(eq.id)) eq=null;
+        const clamp=(v,a,b)=>Math.max(a,Math.min(b,+v||0));
+        const w=clamp(it.w||10,4,40), h=clamp(it.h||8,4,40);
+        const li={id:uid("LI"), equipId:eq?eq.id:null, type:TYPES[it.type]?it.type:(eq?eq.type:"etc"), label:it.label||"", maker:it.maker||"", model:it.model||"", serial:it.serial||"",
+          note:it.note||"", x:clamp(it.x,0,100-w), y:clamp(it.y,0,100-h), w, h};
+        if(eq){ used.add(eq.id); matched++; } else { fresh++; const fb=frames[(+it.frame||1)-1]||frames[0]; if(fb){ li.photo=uid("PH"); await DB.put(li.photo,fb); } }
+        items.push(li);
+      }
+      // 이전에 손으로 배치한 대장 설비 중 이번에 못 찾은 것은 유지
+      const keep=L.items.filter(i=>i.equipId && !used.has(i.equipId));
+      L.items=[...items,...keep]; L.desc=r.room&&r.room.desc||""; L.updatedAt=Date.now();
+      if(file.size<80*1024*1024){ if(L.video) urlCache[L.video]=null; L.video=uid("VD"); await DB.put(L.video,file); }
+      save(); render();
+      toast(`배치 완료: 대장 일치 ${matched} · 미등록 ${fresh}`,"good");
+      ui.openSheet("layout",{key});
+    }catch(e){ if(st) st.innerHTML=""; toast(e.message,"bad"); }
+  },
+  async rackAnalyze(id, mode, blobs){
+    if(!S.settings.apiKey) return toast("랙 분석에는 API 키가 필요합니다(설정)","bad");
+    const e=findEquip(id);
+    const st=()=>$("#rkStat"), say=t=>{ const x=st(); if(x) x.innerHTML=`<p class="note" style="margin-top:10px">⏳ ${esc(t)}</p>`; };
+    try{
+      if(!blobs){
+        const inp=document.createElement("input"); inp.type="file";
+        if(mode==="video"){ inp.accept="video/*"; } else { inp.accept="image/*"; inp.multiple=true; }
+        const files=await new Promise(res=>{ inp.onchange=()=>res([...inp.files]); inp.click(); });
+        if(!files.length) return;
+        if(mode==="video"){ say("영상에서 장면 추출 중…"); blobs=(await videoFrames(files[0],12,1600)).frames; }
+        else { say("사진 준비 중…"); blobs=[]; for(const f of files.slice(0,10)) blobs.push(await resizeImage(f,1600,0.85)); }
+      }
+      say(`AI가 ${blobs.length}장을 종합해 실장 장비를 판독하는 중… (20초~1분)`);
+      const r=await callGemini(PROMPT_RACK(blobs.length,e), blobs, {maxTokens:12000});
+      const photos=[]; for(const b of blobs.slice(0,6)){ const pid=uid("PH"); await DB.put(pid,b); photos.push(pid); }
+      const scan={at:Date.now(), label:(r.rack&&r.rack.label)||"", desc:(r.rack&&r.rack.desc)||"", units:(r.units||[]).map(u=>({...u, kind:u.kind||"장비"})), unreadable:r.unreadable||[], tip:r.tip||"", photos};
+      if(e.rackScan){ e.rackHist=[e.rackScan,...(e.rackHist||[])].slice(0,5); }
+      e.rackScan=scan; if(!e.photo) e.photo=photos[0]; save();
+      toast(`실장 분석 완료: 장비 ${scan.units.filter(isGear).length}대`,"good");
+      ui.openSheet("rack",{id});
+    }catch(err){ const x=st(); if(x) x.innerHTML=""; toast(err.message,"bad"); }
+  },
+  rackToLedger(id){
+    const e=findEquip(id), R=e&&e.rackScan; if(!R) return;
+    const gear=R.units.filter(isGear), kids=S.equips.filter(x=>x.parent===id), used=new Set();
+    let add=0, upd=0, miss=0;
+    gear.forEach((u,i)=>{
+      const pos=R.units.indexOf(u)+1, k=unitKey(u);
+      let c=kids.find(x=>!used.has(x.id) && k && norm(x.model||x.name)===k) || kids.find(x=>!used.has(x.id) && x.rackPos===pos && !k);
+      const data={maker:u.maker||"", model:u.model||"", name:u.name||u.model||(u.function||"").replace(/^추정:\s*/,"")||"미판독 장비", rackPos:pos,
+        building:e.building, floor:e.floor, room:e.room, rack:`${R.label||e.name||e.rack||""} #${pos}`.trim()};
+      data.location=composeLoc(data);
+      if(c){ used.add(c.id); Object.keys(data).forEach(f=>{ if(data[f]) c[f]=data[f]; }); c.health=u.alarm?"주의":c.health; c.updatedAt=Date.now(); upd++; }
+      else { let n=1, cid; do{ cid=`${id}-U${String(n++).padStart(2,"0")}`; }while(findEquip(cid));
+        S.equips.push({id:cid, type:typeFromFunc(u), ...data, parent:id, sync:"신규", health:u.alarm?"주의":"", memo:"랙 실장 분석"+(u.label?" / 라벨 "+u.label:""), createdAt:Date.now()}); add++; }
+    });
+    kids.filter(x=>!used.has(x.id)).forEach(x=>{ x.sync="불일치"; x.memo=[x.memo,`실장 분석(${fmt(Date.now()).slice(0,10)})에서 미확인`].filter(Boolean).join(" / "); miss++; });
+    save(); render(); toast(`대장 반영: 신규 ${add} · 갱신 ${upd}${miss?` · 미확인 ${miss}(불일치 표시)`:""}`,"good");
+    ui.openSheet("rack",{id});
+  },
+  registerLayoutItem(key,it){
+    const [B,F,R]=key.split("¦").map(x=>x===NOLOC?"":x);
+    ui.openSheet("equipEdit",{layoutKey:key, layoutItem:it.id, prefill:{type:it.type, name:it.label, maker:it.maker, model:it.model, serial:it.serial, photo:it.photo||null,
+      building:B, floor:F, room:R, sync:"신규", memo:"동영상 배치도 인식"+(it.note?" / "+it.note:"")}});
   },
   async pickModel(){
     S.settings.apiKey=$("#sKey").value.trim(); if(!S.settings.apiKey){ toast("API 키를 먼저 입력하세요","bad"); return; }
@@ -13408,13 +13982,16 @@ const ui = {
     const rows=parseCSV(text); if(rows.length<2){ toast("데이터가 없습니다","bad"); return; }
     const hd=rows[0].map(h=>h.trim());
     const col=(...names)=>hd.findIndex(h=>names.some(n=>h.includes(n)));
-    const C={id:col("설비ID","ID","관리번호","자산번호"), type:col("종류","구분"), name:col("명칭","설비명","장비명"), maker:col("제조사"), model:col("모델"), serial:col("시리얼","S/N","제조번호"), loc:col("위치","설치장소"), inst:col("설치일")};
+    const C={id:col("설비ID","ID","관리번호","자산번호"), type:col("종류","구분"), name:col("명칭","설비명","장비명"), maker:col("제조사"), model:col("모델"), serial:col("시리얼","S/N","제조번호"), loc:col("위치","설치장소"), inst:col("설치일"), bld:col("건물","국사","동"), flr:col("층"), room:col("실","공간","장소명"), rack:col("랙","세부")};
     const guessType=s=>{ s=s||""; const e=Object.entries(TYPES).find(([k,v])=>s.includes(v.name)||s.toLowerCase().includes(k)||v.name.split("/").some(n=>n&&s.includes(n))); return e?e[0]:"etc"; };
     let add=0, upd=0;
     for(const r of rows.slice(1)){
       const g=i=>i>=0?(r[i]||"").trim():"";
       const id=g(C.id)||newEquipId();
-      const rec={id, type:guessType(g(C.type)||g(C.name)), name:g(C.name), maker:g(C.maker), model:g(C.model), serial:g(C.serial), location:g(C.loc), installed:g(C.inst)};
+      const rec={id, type:guessType(g(C.type)||g(C.name)), name:g(C.name), maker:g(C.maker), model:g(C.model), serial:g(C.serial), location:g(C.loc), installed:g(C.inst),
+        building:g(C.bld), floor:floorNorm(g(C.flr)), room:g(C.room), rack:g(C.rack)};
+      if(!rec.building&&!rec.floor&&!rec.room) splitLoc(rec); else if(!rec.building) rec.building=S.settings.site||"";
+      rec.location=composeLoc(rec)||rec.location;
       const ex=findEquip(id);
       if(ex){ Object.keys(rec).forEach(k=>{ if(rec[k]) ex[k]=rec[k]; }); upd++; }
       else { S.equips.push({...rec, sync:"미확인", createdAt:Date.now()}); add++; }
@@ -13422,8 +13999,8 @@ const ui = {
     save(); render(); toast(`가져오기: 신규 ${add} · 갱신 ${upd}`,"good");
   },
   exportEquips(){
-    const rows=[["설비ID","종류","명칭","제조사","모델","시리얼","정격","위치","설치일","현행화상태","현행화확인일","확인자","최근점검","최근판정","비고"]];
-    S.equips.forEach(e=>rows.push([e.id,typeName(e.type),e.name,e.maker,e.model,e.serial,e.rating,e.location,e.installed,e.sync||"미확인",fmt(e.verifiedAt),e.verifiedBy,fmt(e.lastInspected),e.health,e.memo]));
+    const rows=[["설비ID","종류","명칭","제조사","모델","시리얼","정격","건물","층","실","랙/세부","설치일","현행화상태","현행화확인일","확인자","최근점검","최근판정","비고"]];
+    S.equips.forEach(e=>rows.push([e.id,typeName(e.type),e.name,e.maker,e.model,e.serial,e.rating,e.building,e.floor,e.room,e.rack,e.installed,e.sync||"미확인",fmt(e.verifiedAt),e.verifiedBy,fmt(e.lastInspected),e.health,e.memo]));
     download(`설비현행화_${today()}.csv`, toCSV(rows), "text/csv");
   },
   exportInsp(){
@@ -13462,6 +14039,7 @@ const ui = {
 window.ui=ui;
 
 /* 시작 */
+S.layouts=S.layouts||{}; S.here=S.here||{}; migrateLoc();
 ui.tab(S.tab==="ar"?"home":(S.tab||"home"));
 
 </script>
